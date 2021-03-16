@@ -1,10 +1,10 @@
 import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import HierarchyTable from "@/components/hierarchy-table/hierarchy-table.vue";
 
-describe("HelloWorld.vue", () => {
+describe("HierarchyTable.vue", () => {
   it("renders props.msg when passed", () => {
     const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
+    const wrapper = shallowMount(HierarchyTable, {
       props: { msg }
     });
     expect(wrapper.text()).toMatch(msg);

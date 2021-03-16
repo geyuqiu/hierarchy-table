@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <HierarchyTable msg="Welcome to Your Vue.js + TypeScript App" />
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "./components/HelloWorld.vue";
+import HierarchyTable from "./components/hierarchy-table/hierarchy-table.vue";
 
 @Options({
   components: {
-    HelloWorld
+    HierarchyTable
   }
 })
 export default class App extends Vue {}
