@@ -14,6 +14,9 @@ npm run serve
 ```
 npm run build
 ```
+https://hierarchytable.netlify.app/
+
+deployed to netlify with `netlify deploy`
 
 ### Run your unit tests
 ```
