@@ -1,3 +1,9 @@
-<div class="hello">
-	<h1>{{ msg }}</h1>
+<div class="layout-content">
+	<div class="content-section implementation">
+		<div class="card">
+			<DataTable :value="products">
+				<Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column>
+			</DataTable>
+		</div>
+	</div>
 </div>
