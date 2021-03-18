@@ -1,6 +1,8 @@
-import {Options, Vue} from "vue-class-component";
+import {Vue} from "vue-class-component";
 import ProductService from '@/service/ProductService';
 import {IParent} from '@/model/parent.model';
+import {IJson} from '@/model/json.model';
+import {IRelativesData} from '@/model/relatives-data.model';
 
 export default class HierarchyTable extends Vue {
 	productColumns: any[] = [];
@@ -38,11 +40,19 @@ export default class HierarchyTable extends Vue {
 
 	mounted() {
 		this.productService.getProducts().then((data: any) => {
-			data.map((parent: any, index: number) => {
-				const item: IParent = parent.data;
+			data.map((json: IJson, index: number) => {
+				const item: IParent = json.data;
 				item.id = index;
+				item.relatives = [];
+
+				if (json?.kids?.has_relatives?.records) {
+					json.kids.has_relatives.records.map((relativesData: IRelativesData, index: number) => {
+						item.relatives!.push(relativesData.data);
+					})
+				}
 				this.products.push(item);
 			})
+			console.table(this.products);
 		});
 	}
 
