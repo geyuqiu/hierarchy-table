@@ -3,12 +3,15 @@ import ProductService from '@/service/ProductService';
 import {IParent} from '@/model/parent.model';
 
 export default class HierarchyTable extends Vue {
-	columns: any[] = [];
+	productColumns: any[] = [];
+	relativeColumns: any[] = [];
+	phoneColumns: any[] = [];
 	products: IParent[] = [];
+	expandedRows: IParent[] = [];
 	productService: ProductService = new ProductService();
 
 	created() {
-		this.columns = [
+		this.productColumns = [
 			{field: 'Identification number', header: 'Identification number'},
 			{field: 'Name', header: 'Name'},
 			{field: 'Gender', header: 'Gender'},
@@ -19,6 +22,17 @@ export default class HierarchyTable extends Vue {
 			{field: 'Last breakdown', header: 'Last breakdown'},
 			{field: 'Yearly fee', header: 'Yearly fee'},
 			{field: 'Knows the Joker?', header: 'Knows the Joker?'},
+		];
+		this.relativeColumns = [
+			{field: 'Relative ID', header: 'Relative ID'},
+			{field: 'Patient ID', header: 'Patient ID'},
+			{field: 'Is Alive', header: 'Is Alive'},
+			{field: 'Frequency Of Visits', header: 'Frequency Of Visits'}
+		];
+		this.phoneColumns = [
+			{field: 'Phone ID', header: 'Phone ID'},
+			{field: 'ID Of The Relative', header: 'ID Of The Relative'},
+			{field: 'Phone', header: 'Phone'}
 		];
 	}
 
@@ -35,5 +49,13 @@ export default class HierarchyTable extends Vue {
 	deleteProduct(product: any): void {
 		this.products = this.products.filter(val => val.id !== product.id);
 		this.$toast.add({severity: 'success', summary: 'Successful', detail: 'Deleted', life: 3000});
+	}
+
+	onRowExpand(event: any) {
+		this.$toast.add({severity: 'info', summary: 'Product Expanded', detail: event.data.name, life: 3000});
+	}
+
+	onRowCollapse(event: any) {
+		this.$toast.add({severity: 'success', summary: 'Product Collapsed', detail: event.data.name, life: 3000});
 	}
 }
