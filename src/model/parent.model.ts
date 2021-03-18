@@ -1,3 +1,5 @@
+import {IRelative} from '@/model/relative.model';
+
 export interface IParent {
   id?: number;
   'Identification Number': number;
@@ -10,4 +12,6 @@ export interface IParent {
   'Last Breakdown': Date;
   'Yearly Fee': number;
   'Knows The Joker': boolean;
+
+  relatives?: IRelative[];
 }
