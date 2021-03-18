@@ -6,7 +6,7 @@
 				<Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column>
 				<Column :exportable="false">
 					<template #body="slotProps">
-						<Button icon="pi pi-trash" class="p-button-rounded p-button-warning"
+						<Button icon="pi pi-times" class="p-button-rounded p-button-warning"
 								@click="deleteProduct(slotProps.data)"/>
 					</template>
 				</Column>
