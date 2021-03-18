@@ -31,4 +31,9 @@ export default class HierarchyTable extends Vue {
 			})
 		});
 	}
+
+	deleteProduct(product: any): void {
+		this.products = this.products.filter(val => val.id !== product.id);
+		this.$toast.add({severity: 'success', summary: 'Successful', detail: 'Deleted', life: 3000});
+	}
 }

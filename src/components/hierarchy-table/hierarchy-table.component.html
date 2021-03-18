@@ -1,8 +1,15 @@
 <div class="layout-content">
+	<Toast/>
 	<div class="content-section implementation">
 		<div class="card">
 			<DataTable :value="products">
 				<Column v-for="col of columns" :field="col.field" :header="col.header" :key="col.field"></Column>
+				<Column :exportable="false">
+					<template #body="slotProps">
+						<Button icon="pi pi-trash" class="p-button-rounded p-button-warning"
+								@click="deleteProduct(slotProps.data)"/>
+					</template>
+				</Column>
 			</DataTable>
 		</div>
 	</div>
