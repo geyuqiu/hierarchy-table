@@ -2,9 +2,10 @@ import axios from 'axios';
 
 export default class ProductService {
 
-	getProductsSmall() {
-		// @ts-ignore
-		return axios.get('data/products-small.json').then(res => res.data.data);
+	getProducts(): any {
+		return axios.get('data/example-data.json').then(res => {
+			return res.data;
+		});
 	}
 }
 
