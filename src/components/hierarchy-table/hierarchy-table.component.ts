@@ -28,7 +28,7 @@ export default class HierarchyTable extends Vue {
 		this.relativeColumns = [
 			{field: 'Relative ID', header: 'Relative ID'},
 			{field: 'Patient ID', header: 'Patient ID'},
-			{field: 'Is Alive', header: 'Is Alive'},
+			{field: 'Is alive?', header: 'Is alive?'},
 			{field: 'Frequency Of Visits', header: 'Frequency Of Visits'}
 		];
 		this.phoneColumns = [
