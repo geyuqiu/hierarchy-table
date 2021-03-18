@@ -41,16 +41,18 @@ export default class HierarchyTable extends Vue {
 	mounted() {
 		this.productService.getProducts().then((data: any) => {
 			data.map((json: IJson, index: number) => {
-				const item: IParent = json.data;
-				item.id = index;
-				item.relatives = [];
+				const parent: IParent = json.data;
+				parent.id = index;
+				parent.relatives = [];
 
 				if (json?.kids?.has_relatives?.records) {
 					json.kids.has_relatives.records.map((relativesData: IRelativesData, index: number) => {
-						item.relatives!.push(relativesData.data);
+						const relative = relativesData.data;
+						relative.id = index;
+						parent.relatives!.push(relative);
 					})
 				}
-				this.products.push(item);
+				this.products.push(parent);
 			})
 			console.table(this.products);
 		});
