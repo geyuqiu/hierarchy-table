@@ -1,13 +1,13 @@
 export interface IParent {
-  id?: string;
-  identificationNumber?: number;
-  name?: string;
-  gender?: string;
-  risk?: string;
-  hairLength?: string;
-  iQ?: number;
-  admissionDate?: Date;
-  lastBreakdown?: Date;
-  yearlyFee?: number;
-  knowsTheJoker?: boolean;
+  id?: number;
+  'Identification Number': number;
+  Name: string;
+  Gender: string;
+  Risk: string;
+  'Hair Length': string;
+  IQ: number;
+  'Admission Date': Date;
+  'Last Breakdown': Date;
+  'Yearly Fee': number;
+  'Knows The Joker': boolean;
 }

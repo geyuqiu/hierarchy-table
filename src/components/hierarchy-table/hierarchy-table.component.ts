@@ -1,9 +1,10 @@
 import {Options, Vue} from "vue-class-component";
 import ProductService from '@/service/ProductService';
+import {IParent} from '@/model/parent.model';
 
 export default class HierarchyTable extends Vue {
 	columns: any[] = [];
-	products: any[] = [];
+	products: IParent[] = [];
 	productService: ProductService = new ProductService();
 
 	created() {
@@ -23,8 +24,10 @@ export default class HierarchyTable extends Vue {
 
 	mounted() {
 		this.productService.getProducts().then((data: any) => {
-			data.map((parent: any) => {
-				this.products.push(parent.data);
+			data.map((parent: any, index: number) => {
+				const item: IParent = parent.data;
+				item.id = index;
+				this.products.push(item);
 			})
 		});
 	}

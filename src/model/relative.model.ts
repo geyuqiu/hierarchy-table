@@ -1,7 +1,7 @@
 export interface IRelative {
-  id?: string;
-  relativeID?: number;
-  patientID?: number;
-  isAlive?: boolean;
-  frequencyOfVisits?: number;
+  id?: number;
+  'Relative ID': number;
+  'Patient ID': number;
+  'Is Alive': boolean;
+  'Frequency Of Visits': number;
 }
