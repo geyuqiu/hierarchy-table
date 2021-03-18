@@ -29,7 +29,7 @@ export default class HierarchyTable extends Vue {
 			{field: 'Relative ID', header: 'Relative ID'},
 			{field: 'Patient ID', header: 'Patient ID'},
 			{field: 'Is alive?', header: 'Is alive?'},
-			{field: 'Frequency Of Visits', header: 'Frequency Of Visits'}
+			{field: 'Frequency of visits', header: 'Frequency of visits'}
 		];
 		this.phoneColumns = [
 			{field: 'Phone ID', header: 'Phone ID'},

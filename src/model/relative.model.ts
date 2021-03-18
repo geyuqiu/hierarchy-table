@@ -3,5 +3,5 @@ export interface IRelative {
   'Relative ID': number;
   'Patient ID': number;
   'Is alive?': boolean;
-  'Frequency Of Visits': number;
+  'Frequency of visits': number;
 }
