@@ -242,3 +242,7 @@ img.flag {
 	margin-bottom: 2rem;
   }
 }
+
+.p-datatable .p-datatable-thead > tr > th > .p-column-header-content > .p-column-title {
+  display: initial !important;
+}
