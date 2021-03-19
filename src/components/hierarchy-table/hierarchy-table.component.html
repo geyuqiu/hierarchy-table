@@ -4,7 +4,7 @@
 		<div class="card">
 			<h5>DATA-1.JSON</h5>
 			<DataTable :value="products" v-model:expandedRows="expandedProductRows" dataKey="id"
-					   @row-expand="onRowExpand" @row-collapse="onRowCollapse" responsiveLayout="stack"
+					   responsiveLayout="stack"
 					   breakpoint="960px">
 				<Column :expander="true" headerStyle="width: 3rem"/>
 				<Column v-for="col of productColumns" :field="col.field" :header="col.header" :key="col.field"></Column>
@@ -19,7 +19,6 @@
 						<h5>HAS_RELATIVES</h5>
 						<DataTable :value="slotProps.data.relatives"
 								   v-model:expandedRows="expandedRelativeRows" dataKey="id"
-								   @row-expand="onRowExpand" @row-collapse="onRowCollapse"
 								   responsiveLayout="stack" breakpoint="960px">
 							<Column :expander="true" headerStyle="width: 3rem"/>
 							<Column v-for="col of relativeColumns" :field="col.field" :header="col.header"
