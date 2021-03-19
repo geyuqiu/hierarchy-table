@@ -13,9 +13,9 @@ export default class HierarchyTable extends Vue {
 	phoneColumns: any[] = [];
 
 	products: IParent[] = [];
-	relatives: IRelative[] = [];
-	phones: IPhone[] = [];
 
+	expandedProductRows: IParent[] = [];
+	expandedRelativeRows: IRelative[] = [];
 	productService: ProductService = new ProductService();
 
 	created() {
@@ -64,11 +64,9 @@ export default class HierarchyTable extends Vue {
 								const phone = phoneData.data;
 								phone.id = index;
 								relative.phones.push(phone);
-								this.phones.push(phone);
 							});
 						}
 						parent.relatives!.push(relative);
-						this.relatives.push(relative);
 					});
 				}
 				this.products.push(parent);
