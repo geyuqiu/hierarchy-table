@@ -23,6 +23,12 @@
 							<Column :expander="true" headerStyle="width: 3rem"/>
 							<Column v-for="col of relativeColumns" :field="col.field" :header="col.header"
 									:key="col.field"></Column>
+							<Column :exportable="false">
+								<template #body="slotProps">
+									<Button icon="pi pi-times" class="p-button-rounded p-button-warning"
+											@click="deleteRelative(slotProps.data)"/>
+								</template>
+							</Column>
 							<template #expansion="slotProps">
 								<div>
 									<h5>HAS_RELATIVES</h5>
@@ -30,6 +36,12 @@
 											   responsiveLayout="stack" breakpoint="960px">
 										<Column v-for="col of phoneColumns" :field="col.field" :header="col.header"
 												:key="col.field"></Column>
+										<Column :exportable="false">
+											<template #body="slotProps">
+												<Button icon="pi pi-times" class="p-button-rounded p-button-warning"
+														@click="deletePhone(slotProps.data)"/>
+											</template>
+										</Column>
 									</DataTable>
 								</div>
 							</template>

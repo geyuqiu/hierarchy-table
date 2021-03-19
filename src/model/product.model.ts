@@ -1,6 +1,6 @@
 import {IRelative} from '@/model/relative.model';
 
-export interface IParent {
+export interface IProduct {
   id?: number;
   'Identification Number': number;
   Name: string;

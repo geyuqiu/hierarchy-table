@@ -1,16 +1,17 @@
 import {Vue} from "vue-class-component";
 import ProductService from '@/service/ProductService';
-import {IParent} from '@/model/parent.model';
+import {IProduct} from '@/model/product.model';
 import {IRelative} from '@/model/relative.model';
+import {IPhone} from '@/model/phone.model';
 
 export default class HierarchyTable extends Vue {
 	productColumns: any[] = [];
 	relativeColumns: any[] = [];
 	phoneColumns: any[] = [];
 
-	products: IParent[] = [];
+	products: IProduct[] = [];
 
-	expandedProductRows: IParent[] = [];
+	expandedProductRows: IProduct[] = [];
 	expandedRelativeRows: IRelative[] = [];
 	productService: ProductService = new ProductService();
 
@@ -41,14 +42,31 @@ export default class HierarchyTable extends Vue {
 	}
 
 	mounted() {
-		this.productService.getProducts().then((data: IParent[]) => {
+		this.productService.getProducts().then((data: IProduct[]) => {
 			console.table(data);
 			this.products = data;
 		});
 	}
 
-	deleteProduct(product: any): void {
+	deleteProduct(product: IProduct): void {
 		this.products = this.products.filter(val => val.id !== product.id);
+		this.displayToastAfterDeletion();
+	}
+
+	private displayToastAfterDeletion() {
 		this.$toast.add({severity: 'success', summary: 'Successful', detail: 'Deleted', life: 3000});
+	}
+
+	deleteRelative(relative: IRelative): void {
+		const relativeIndex: number = this.products.findIndex(product => product.id === relative.productId);
+		this.products[relativeIndex].relatives = this.products[relativeIndex].relatives.filter(val => val.id !== relative.id);
+		this.displayToastAfterDeletion();
+	}
+
+	deletePhone(phone: IPhone): void {
+		const relativeIndex: number = this.products.findIndex(product => product.id === phone.productId);
+		const phoneIndex: number = this.products[relativeIndex].relatives.findIndex(relative => relative.id === phone.relativeId);
+		this.products[relativeIndex].relatives[phoneIndex].phones = this.products[relativeIndex].relatives[phoneIndex].phones.filter(val => val.id !== phone.id);
+		this.displayToastAfterDeletion();
 	}
 }
