@@ -51,12 +51,4 @@ export default class HierarchyTable extends Vue {
 		this.products = this.products.filter(val => val.id !== product.id);
 		this.$toast.add({severity: 'success', summary: 'Successful', detail: 'Deleted', life: 3000});
 	}
-
-	onRowExpand(event: any) {
-		this.$toast.add({severity: 'info', summary: 'Product Expanded', detail: event.data.name, life: 3000});
-	}
-
-	onRowCollapse(event: any) {
-		this.$toast.add({severity: 'success', summary: 'Product Collapsed', detail: event.data.name, life: 3000});
-	}
 }
