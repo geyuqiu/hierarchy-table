@@ -13,5 +13,5 @@ export interface IParent {
   'Yearly Fee': number;
   'Knows The Joker': boolean;
 
-  relatives?: IRelative[];
+  relatives: IRelative[];
 }
