@@ -3,10 +3,8 @@
 	<div class="content-section implementation">
 		<div class="card">
 			<h5>DATA-1.JSON</h5>
-			<DataTable :value="products" v-model:expandedRows="expandedRows" dataKey="id"
-					   @row-expand="onRowExpand" @row-collapse="onRowCollapse" responsiveLayout="stack"
+			<DataTable :value="products" responsiveLayout="stack"
 					   breakpoint="960px">
-				<Column :expander="true" headerStyle="width: 3rem"/>
 				<Column v-for="col of productColumns" :field="col.field" :header="col.header" :key="col.field"></Column>
 				<Column :exportable="false">
 					<template #body="slotProps">
@@ -14,15 +12,20 @@
 								@click="deleteProduct(slotProps.data)"/>
 					</template>
 				</Column>
-				<template #expansion="slotProps">
-					<div>
-						<h5>HAS_RELATIVES</h5>
-						<DataTable :value="slotProps.data.relatives" responsiveLayout="stack" breakpoint="960px">
-							<Column v-for="col of relativeColumns" :field="col.field" :header="col.header"
-									:key="col.field"></Column>
-						</DataTable>
-					</div>
-				</template>
+			</DataTable>
+		</div>
+		<div class="card">
+			<h5>HAS_RELATIVES</h5>
+			<DataTable :value="relatives" responsiveLayout="stack" breakpoint="960px">
+				<Column v-for="col of relativeColumns" :field="col.field" :header="col.header"
+						:key="col.field"></Column>
+			</DataTable>
+		</div>
+		<div class="card">
+			<h5>HAS_PHONES</h5>
+			<DataTable :value="phones" responsiveLayout="stack" breakpoint="960px">
+				<Column v-for="col of phoneColumns" :field="col.field" :header="col.header"
+						:key="col.field"></Column>
 			</DataTable>
 		</div>
 	</div>

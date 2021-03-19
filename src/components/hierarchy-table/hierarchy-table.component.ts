@@ -4,13 +4,18 @@ import {IParent} from '@/model/parent.model';
 import {IJson} from '@/model/json.model';
 import {IRelativesData} from '@/model/relatives-data.model';
 import {IPhoneData} from '@/model/phones-data.model';
+import {IRelative} from '@/model/relative.model';
+import {IPhone} from '@/model/phone.model';
 
 export default class HierarchyTable extends Vue {
 	productColumns: any[] = [];
 	relativeColumns: any[] = [];
 	phoneColumns: any[] = [];
+
 	products: IParent[] = [];
-	expandedRows: IParent[] = [];
+	relatives: IRelative[] = [];
+	phones: IPhone[] = [];
+
 	productService: ProductService = new ProductService();
 
 	created() {
@@ -34,7 +39,7 @@ export default class HierarchyTable extends Vue {
 		];
 		this.phoneColumns = [
 			{field: 'Phone ID', header: 'Phone ID'},
-			{field: 'ID Of The Relative', header: 'ID Of The Relative'},
+			{field: 'ID of the relative', header: 'ID of the relative'},
 			{field: 'Phone', header: 'Phone'}
 		];
 	}
@@ -59,9 +64,11 @@ export default class HierarchyTable extends Vue {
 								const phone = phoneData.data;
 								phone.id = index;
 								relative.phones.push(phone);
+								this.phones.push(phone);
 							});
 						}
 						parent.relatives!.push(relative);
+						this.relatives.push(relative);
 					});
 				}
 				this.products.push(parent);

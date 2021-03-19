@@ -1,6 +1,6 @@
 export interface IPhone {
   id?: number;
   'Phone ID': number;
-  'ID Of The Relative': number;
+  'ID of the relative': number;
   'Phone': string;
 }
