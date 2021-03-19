@@ -51,4 +51,9 @@ export default class HierarchyTable extends Vue {
 		this.products = this.products.filter(val => val.id !== product.id);
 		this.$toast.add({severity: 'success', summary: 'Successful', detail: 'Deleted', life: 3000});
 	}
+
+	expandProduct(product: any) {
+		this.expandedProductRows = [...this.products.filter(p => p.id === product.id), ...this.expandedProductRows];
+		this.$toast.add({severity: 'success', summary: 'All Rows Expanded', life: 3000});
+	}
 }

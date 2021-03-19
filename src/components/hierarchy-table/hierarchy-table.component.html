@@ -6,7 +6,11 @@
 			<DataTable :value="products" v-model:expandedRows="expandedProductRows" dataKey="id"
 					   responsiveLayout="stack"
 					   breakpoint="960px">
-				<Column :expander="true" headerStyle="width: 3rem"/>
+				<Column headerStyle="width: 3rem">
+					<template #body="slotProps">
+						<Button icon="pi pi-angle-right" @click="expandProduct(slotProps.data)"/>
+					</template>
+				</Column>
 				<Column v-for="col of productColumns" :field="col.field" :header="col.header" :key="col.field"></Column>
 				<Column :exportable="false">
 					<template #body="slotProps">
