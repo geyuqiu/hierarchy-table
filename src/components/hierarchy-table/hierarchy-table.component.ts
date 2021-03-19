@@ -1,11 +1,7 @@
 import {Vue} from "vue-class-component";
 import ProductService from '@/service/ProductService';
 import {IParent} from '@/model/parent.model';
-import {IJson} from '@/model/json.model';
-import {IRelativesData} from '@/model/relatives-data.model';
-import {IPhoneData} from '@/model/phones-data.model';
 import {IRelative} from '@/model/relative.model';
-import {IPhone} from '@/model/phone.model';
 
 export default class HierarchyTable extends Vue {
 	productColumns: any[] = [];
@@ -45,33 +41,9 @@ export default class HierarchyTable extends Vue {
 	}
 
 	mounted() {
-		this.productService.getProducts().then((data: any) => {
-			data.map((json: IJson, index: number) => {
-				const parent: IParent = json.data;
-				parent.id = index;
-				parent.relatives = [];
-
-				if (json?.kids?.has_relatives?.records) {
-					const relativeRecords = json.kids.has_relatives.records;
-					relativeRecords.map((relativesData: IRelativesData, index: number) => {
-						const relative = relativesData.data;
-						relative.id = index;
-						relative.phones = [];
-
-						if (relativesData?.kids?.has_phone?.records) {
-							const phoneRecords = relativesData.kids.has_phone.records;
-							phoneRecords.map((phoneData: IPhoneData, index: number) => {
-								const phone = phoneData.data;
-								phone.id = index;
-								relative.phones.push(phone);
-							});
-						}
-						parent.relatives!.push(relative);
-					});
-				}
-				this.products.push(parent);
-			})
-			console.table(this.products);
+		this.productService.getProducts().then((data: IParent[]) => {
+			console.table(data);
+			this.products = data;
 		});
 	}
 
